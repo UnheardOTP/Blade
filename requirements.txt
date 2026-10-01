@@ -1,0 +1,2 @@
+# BLADE utilizes only Python's standard library (asyncio, socket, typing, random, re)
+# for zero-dependency reliability, lightning-fast Docker builds, and robust security.

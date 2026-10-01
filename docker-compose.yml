@@ -1,0 +1,14 @@
+services:
+  blade:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: blade-game
+    restart: unless-stopped
+    ports:
+      - "2323:2323"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TELNET_PORT=2323
+    stdin_open: true
+    tty: true
