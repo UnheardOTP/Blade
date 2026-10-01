@@ -34,7 +34,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/blade:latest
+          tags: ghcr.io/unheardotp/blade:latest
           cache-from: type=gha,scope=blade-app
           cache-to: type=gha,mode=max,scope=blade-app
 
@@ -64,7 +64,7 @@ jobs:
           script: |
             echo "=== STARTING BLADE DEPLOYMENT ==="
             # 1. Pull the newly published image from GitHub Container Registry
-            docker pull ghcr.io/${{ github.repository_owner }}/blade:latest
+            docker pull ghcr.io/unheardotp/blade:latest
             
             # 2. Extract configuration from the currently running Blade container (if exists)
             echo "Checking existing Blade container..."
@@ -83,6 +83,6 @@ jobs:
             
             # 3. Start the container with port 2323 exposed for Telnet access
             echo "Starting Blade container on port 2323..."
-            eval "docker run -d --name Blade -p 2323:2323 --restart unless-stopped --label net.unraid.docker.managed=dockerman $VOLUME_MOUNTS $ENV_VARS ghcr.io/${{ github.repository_owner }}/blade:latest"
+            eval "docker run -d --name Blade -p 2323:2323 --restart unless-stopped --label net.unraid.docker.managed=dockerman $VOLUME_MOUNTS $ENV_VARS ghcr.io/unheardotp/blade:latest"
             
             echo "=== BLADE DEPLOYMENT COMPLETED ==="
